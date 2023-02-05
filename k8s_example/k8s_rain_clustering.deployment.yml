@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-rain-clustering-service
+spec:
+  selector:
+    app: k8s-rain-clustering
+  ports:
+  - protocol: "TCP"
+    port: 6000
+    targetPort: 5000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-rain-clustering
+spec:
+  selector:
+    matchLabels:
+      app: k8s-rain-clustering
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: k8s-rain-clustering
+    spec:
+      hostNetwork:  True
+      containers:
+      - name: k8s-rain-clustering
+        image: [your image from dockerhub]
+        env:
+          - name: API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: k8s-api-key
+                key:  api_key.txt
+          - name: API_TWILIO_SID
+            valueFrom:
+              secretKeyRef:
+                name: k8s-api-twilio-sid
+                key: api_twilio_sid.txt
+          - name: API_TWILIO_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: k8s-api-twilio-token
+                key:  api_twilio_token.txt
+          - name: API_TWILIO_NUM
+            valueFrom:
+              secretKeyRef:
+                name: k8s-api-twilio-num
+                key:  api_tel_num.txt
+          - name: SQL_SERVER_HOST
+            value:  host.docker.internal
+          - name: SQL_SERVER_PORT
+            value:  [your sql port]
+          - name: SQL_SERVER_USERNAME
+            value:  [your sql user name]
+          - name: SQL_SERVER_PASSWORD
+            value:  [your sql psw]
+          - name: SQL_SERVER_DATABASE
+            value: [your sql database]
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4025
+      imagePullSecrets:
+        - name: k8s-registry-secret

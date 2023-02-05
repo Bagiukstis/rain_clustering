@@ -1,0 +1,15 @@
+artifact_uri: file:///home/vdr/PycharmProjects/rain_clustering/mlruns/2/7214477162f54ac1859d4cfb199ac41f/artifacts
+end_time: 1667741756984
+entry_point_name: ''
+experiment_id: '2'
+lifecycle_stage: active
+run_id: 7214477162f54ac1859d4cfb199ac41f
+run_name: thundering-hare-891
+run_uuid: 7214477162f54ac1859d4cfb199ac41f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1667741756519
+status: 3
+tags: []
+user_id: vdr
