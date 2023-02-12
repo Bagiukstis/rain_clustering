@@ -20,7 +20,7 @@ The scope of the project was not to build a very precise weather forecaster, but
 In this repository, one can get inspired to create something similar himself, as the source code includes:
 1. Timeseries data processing
 2. Model training
-3. Data loading and storing with a local SQL server
+3. Data loading and storing in a local SQL server
 4. Results visualization
 5. Scheduling with Kubernetes
 
@@ -57,4 +57,5 @@ D-1 Evaluation for the entire month of January reaches a mean accuracy of 94%:
 
 ## Future improvements
 
+Train the model with more data (autumn).
 Implement a CI/CD pipeline to regularly retrain new models and check their performance (autumn).
