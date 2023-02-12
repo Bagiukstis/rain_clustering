@@ -31,7 +31,7 @@ https://ubuntu.com/tutorials/how-to-kubernetes-cluster-on-raspberry-pi#1-overvie
 ### Workflow 
 Every single morning there is a scheduled Kubernetes cronjob which creates a new pod and runs the Docker container. Inside the Docker container, newest weather data is pulled and stored in a local database hosted on one of Raspberry pi's. Next, the received data is passed to the model, which at 07:00 predicts if there is going to be rain for the next 12 hours to cover the full work-day. The predictions are stored and the next day compared with the actual values. Since this is a classification problem, only the accuracy is computed as the evaluation metric. 
 
-By slightly modifying the source code, one can achieve the same on the local computer for a specifically selected area of interest. Just make sure to get the API Keys from visualcrossing Twilio. 
+By slightly modifying the source code, one can achieve the same on the local computer for a specifically selected area of interest. Just make sure to get the API Keys from visualcrossing and Twilio. 
 
 However, due to the current time and hardware limits, creation of the CI/CD pipeline is postponed until autumn. Of course, it would be possible to put this on a cloud, but I wanted to utilize my own hardware. To train a RF ML model a fast proccessing time is required, thus a hardware upgrade is needed. 
 
